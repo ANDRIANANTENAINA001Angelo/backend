@@ -15,22 +15,18 @@ class AuthController extends Controller
     }
 
     public function login(LoginRequest $request){
-        $credentials = $request->validated();
+        $email = $request->validated("email");
         
-        if (Auth::attempt($credentials)) {
-            $token = $request->user()->createToken("token");
-    
-            return $this->response->success(
-                [
-                'token' => $token->plainTextToken,
-                "user"=>Auth::user()
-            ],"user connected succesfuly!"
-            );
-            
-        }
-        
-        return $this->response->error("BAD REQUEST","Les données reçues ne sont pas valide!",400);
+        $user= User::where("email","=",$email)->get();
+        $token = $user[0]->createToken("token");
+
+        return $this->response->success(
+            [
+            'token' => $token->plainTextToken,
+            "user"=>Auth::user()
+        ],"user connected succesfuly!");       
     }
+        
 
     public function logout(Request $request){
         $request->user()->currentAccessToken()->delete();

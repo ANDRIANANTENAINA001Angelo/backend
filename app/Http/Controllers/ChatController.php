@@ -17,6 +17,7 @@ class ChatController extends Controller
     }
 
     public function send(MessageResquest $request){
+        
         ChatMessageEvent::dispatch($request->validated());
         return Response()->json(['message'=>"your message will be sent in a few moment!"],202);
 

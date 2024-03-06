@@ -19,8 +19,8 @@ use PharIo\Version\OrVersionConstraintGroup;
 */
 
 // route non protégé
-Route::get("/api/login",[AuthController::class,"login"]);
-Route::get("/api/signup",[UserController::class,"store"]);
+Route::post("/api/login",[AuthController::class,"login"]);
+Route::post("/api/signup",[UserController::class,"store"]);
 
 
 

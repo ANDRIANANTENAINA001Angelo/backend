@@ -22,7 +22,8 @@ class User extends Authenticatable
         "prenom",
         "adresse",
         "niveau",
-        
+        "matricule",
+
         'email',
         'password',
     ];
