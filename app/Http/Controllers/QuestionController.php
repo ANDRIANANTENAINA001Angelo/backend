@@ -3,17 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\Question as Questionnaire;
+use App\Models\Response;
 use Illuminate\Database\Eloquent\Casts\Json;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Symfony\Component\Console\Question\Question;
 
 class QuestionController extends Controller
 {
     public function basic(Questionnaire $question){
-        return response()->json($question->reponse()->get());
+        $reponse= Response::where("id","=",$question->reponse)->get();
+        return $reponse;
     }
 
     public function avance(Request $request){
+      
         $questions= Questionnaire::all();
         $reponse= "";
         $data = mb_strtolower($request->data, 'UTF-8');
@@ -25,11 +29,12 @@ class QuestionController extends Controller
         $data = str_replace($caracteresAccentues, $caracteresNonAccentues, $data);
 
         foreach ($questions as $question) {
-            $mot_cle= mb_strtolower($question->mmot_cle);
+            $mot_cle= mb_strtolower($question->mot_cle);
             $mot_cle= str_replace($caracteresAccentues, $caracteresNonAccentues, $mot_cle);
+        
 
-            if ($data == $question->mot_cle || Str::contains($data, $question->mot_cle)){
-                $reponse= $question->response()->get();
+            if ($data === $mot_cle || Str::contains($data, $mot_cle)){
+                $reponse = $reponse= Response::where("id","=",$question->reponse)->get();
                 return response()->json($reponse);
             }
             

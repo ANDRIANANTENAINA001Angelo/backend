@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Faker\Factory as FakerFactory;
 
 $faker = FakerFactory::create('fr_FR'); // Définit la localisation en français
+use Illuminate\Support\Arr;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Astuce>
@@ -19,8 +20,11 @@ class AstuceFactory extends Factory
      */
     public function definition(): array
     {
+        $type = ["educative", "pedagogique", "professionelle"];
         return [
-            'label' => fake()->sentences(3, true)
+            'titre' => fake()->sentence(),
+            'contenu' => fake()->sentences(3, true),
+            'type' => Arr::random($type)
         ];
     }
 }
