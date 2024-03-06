@@ -9,11 +9,9 @@ class OrientionController extends Controller
 {
     public function getOrientation(Request $request){
 
-        $math = 0;
         $reseau = 0;
         $dev = 0;
-
-        $last_index = count($request->liste_matiere)-1;
+        $last_index = count($request->liste_matiere) - 1;
         
 
         for ($i = 0; $i <= $last_index; $i++) {
@@ -26,12 +24,23 @@ class OrientionController extends Controller
             }
         }
 
-        
+        $pourcentage_GB = ($dev / ($dev + $reseau)) * 100;
+        $pourcentage_SR = 100 - $pourcentage_GB;
         
         if($reseau > $dev){
-            return "SR";
-        }else{
-            return "GB";
+
+            return [
+                "GB" => $pourcentage_GB . "%",
+                "SR" => $pourcentage_SR . "%"
+            ];
+
+        } else {
+
+            return [
+                "GB" => $pourcentage_GB . "%",
+                "SR" => $pourcentage_SR . "%"
+            ];
+
         }   
         
         
