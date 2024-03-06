@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Astuce;
 use Illuminate\Http\Request;
 
 class AstuceController extends Controller
@@ -33,9 +34,9 @@ class AstuceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show()
     {
-        
+        return Astuce::first();
     }
 
     /**
