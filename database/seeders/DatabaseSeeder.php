@@ -87,11 +87,11 @@ class DatabaseSeeder extends Seeder
         ]);
         \App\Models\Matiere::factory()->create([
             "label"=>"Electronique Analogique",
-            "categorie_id"=>$math->id
+            "categorie_id"=>$reseau->id
         ]);
         \App\Models\Matiere::factory()->create([
             "label"=>"Electronique Numérique",
-            "categorie_id"=>$math->id
+            "categorie_id"=>$reseau->id
         ]);
 
         \App\Models\Matiere::factory()->create([
@@ -100,7 +100,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         \App\Models\Matiere::factory()->create([
-            "label"=>"Langace C",
+            "label"=>"Langage C",
             "categorie_id"=>$dev->id
         ]);
 

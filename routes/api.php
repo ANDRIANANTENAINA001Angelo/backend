@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\OrientionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use PharIo\Version\OrVersionConstraintGroup;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +27,7 @@ Route::get("/api/login",[AuthController::class,"login"]);
 Route::middleware("auth:sanctum")->group(function(){
     Route::delete("/api/logout",[AuthController::class,"logout"]);
     Route::name("user.")->resource("user",UserController::class)->except(["create","edit"]);
-
 });
+
+Route::post("/orientation", [OrientionController::class, "getOrientation"]);
 

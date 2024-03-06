@@ -12,4 +12,8 @@ class Matiere extends Model
     protected $fillable= [
         "label"
     ];
+
+    public function categorie(){
+        return $this->belongsTo(Categorie::class);
+    }
 }
