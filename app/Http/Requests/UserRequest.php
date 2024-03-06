@@ -29,9 +29,10 @@ class UserRequest extends FormRequest
             "nom"=>["required","String"],
             "prenom"=>["required","String"],
             "matricule"=>["required",Rule::unique("users","matricule")],
+            "niveau"=>["required",Rule::in(["L1","L2","L3","M1","M2"])],
             "adresse"=>["required","String"],
             "email"=>["required","email"],
-            "password"=>["required","min:4"],
+            // "password"=>["required","min:4"],
         ];
     }
 
