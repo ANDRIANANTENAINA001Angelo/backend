@@ -155,5 +155,63 @@ class DatabaseSeeder extends Seeder
             ]
         );
         
+        $relever= \App\Models\Response::factory()->create(
+            [
+                "label"=>"Pour le demande de relever de note ou diplôme, rendez-vous au service de scolarité dans la salle
+                  003"]
+        );
+
+        $questionRelever= \App\Models\Question::factory()->create(
+            [
+                'mot_cle'=> "relever note",
+                "phrase"=> "Où je peut avoir mon relever des notes? ",
+                "reponse" => $relever->id
+            ]
+        );
+        $questionDiplôme= \App\Models\Question::factory()->create(
+            [
+                'mot_cle'=> "Diplôme",
+                "phrase"=> "Où je peut faire mon demande de diplôme ? ",
+                "reponse" => $relever->id
+            ]
+        );
+
+        $responsableMention= \App\Models\Response::factory()->create(
+            [
+                "label"=>"Les responsables de mention sont : Monsieur RABETAFIKA Louis Haja, Maître de Conférences 
+                pour la mention 'Informatique'; et Monsieur DIMBISOA William Germain, 
+                Maître de Conférences pour la mention 'Intelligence Artificielle'."
+            ]
+        );
+
+        $responsableParcours= \App\Models\Response::factory()->create(
+            [
+                "label"=>"Les responsables de parcours sont : Monsieur RALAIVAO Jean Christian, 
+                Assistant d’Enseignement Supérieur et de Recherche pour la parcours 'Génie Logiciel et Base de Données'; 
+                Monsieur SIAKA, Assistant d’Enseignement Supérieur et de Recherche  pour la parcours 
+                'Administration Systèmes et Réseaux'; et pour finir, Monsieur GILANTE Gesazafy, 
+                Assistant d’Enseignement Supérieur et de Recherche pour la parcours 'Informatique Générale '"
+            ]
+        );
+
+
+
+        $questionResp= \App\Models\Question::factory()->create(
+            [
+                'mot_cle'=> "Mention",
+                "phrase"=> "Qui sont les responsables de mention ?",
+                "reponse" => $responsableMention->id
+            ]
+        );
+
+        $questionMention= \App\Models\Question::factory()->create(
+            [
+                'mot_cle'=> "Mention",
+                "phrase"=> "Qui sont les responsables de parcours ?",
+                "reponse" => $responsableParcours->id
+            ]
+        );
+
     }
 }
+
