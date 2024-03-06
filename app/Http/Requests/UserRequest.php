@@ -26,7 +26,10 @@ class UserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "name"=>["required","String"],
+            "nom"=>["required","String"],
+            "prenom"=>["required","String"],
+            "matricule"=>["required",Rule::unique("users","matricule")],
+            "adresse"=>["required","String"],
             "email"=>["required","email"],
             "password"=>["required","min:4"],
         ];
