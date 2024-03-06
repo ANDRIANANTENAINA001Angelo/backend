@@ -10,6 +10,6 @@ class Mention extends Model
     use HasFactory;
 
     protected $fillable = [
-        'labelle'
+        'label'
     ];    
 }

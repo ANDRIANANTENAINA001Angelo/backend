@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('mentions', function (Blueprint $table) {
             $table->id();
-            $table->string("labelle");
+            $table->string("label");
             $table->timestamps();
         });
     }
