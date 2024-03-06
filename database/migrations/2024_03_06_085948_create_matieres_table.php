@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('matieres', function (Blueprint $table) {
             $table->id();
             $table->string("label");
-            $table->foreignId(Categorie::class);
+            $table->foreignIdFor(Categorie::class);
             $table->timestamps();
         });
     }
