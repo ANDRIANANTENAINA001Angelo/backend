@@ -10,9 +10,9 @@ class AstuceController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function showAll()
     {
-        //
+        return Astuce::all();
     }
 
     /**
@@ -28,16 +28,15 @@ class AstuceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
      * Display the specified resource.
      */
-    public function show()
+    public function filterType(Request $request)
     {
-        
-        return Astuce::first();
+        return Astuce::where("type", "=", $request->type)->get();
     }
 
     /**

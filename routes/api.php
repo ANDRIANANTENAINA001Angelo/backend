@@ -33,8 +33,12 @@ Route::middleware("auth:sanctum")->group(function(){
     Route::name("user.")->resource("user",UserController::class)->except(["create","edit"]);
 });
 
+//Orientation
 Route::post("orientation", [OrientionController::class, "getOrientation"]);
-Route::get("astuce", [AstuceController::class, "show"]);
+
+//Information
+Route::get("information", [AstuceController::class, "showAll"]);
+Route::get("information/{type}", [AstuceController::class, "filterType"]);
 
 // Question
 Route::get("question/{question}",[QuestionController::class,"basic"]);

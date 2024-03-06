@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Arr;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Astuce>
@@ -16,8 +17,11 @@ class AstuceFactory extends Factory
      */
     public function definition(): array
     {
+        $type = ["educative", "pedagogique", "professionelle"];
         return [
-            'label' => fake()->sentences(3, true)
+            'titre' => fake()->sentence(),
+            'contenu' => fake()->sentences(3, true),
+            'type' => Arr::random($type)
         ];
     }
 }

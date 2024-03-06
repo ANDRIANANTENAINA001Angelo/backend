@@ -12,7 +12,8 @@ class Question extends Model
 
     protected $fillable = [
         "mot_cle",
-        "phrase"
+        "phrase",
+        "reponse"
     ];
 
 

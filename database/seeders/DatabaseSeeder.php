@@ -143,8 +143,7 @@ class DatabaseSeeder extends Seeder
         // créé question et response
         $presentation= \App\Models\Response::factory()->create(
             [
-                "label"=>"L'ENI ou l'école nationale d'informatique, est la pépinière des élites en informatique. 
-                Son but est de former des élites compétents! Elle se situe à Tanambao Fianarantsoa."]
+                "label"=>"L'ENI ou l'école nationale d'informatique, est la pépinière des élites en informatique. Son but est de former des élites compétents! Elle se situe à Tanambao Fianarantsoa."]
         );
 
         $question= \App\Models\Question::factory()->create(
@@ -157,13 +156,12 @@ class DatabaseSeeder extends Seeder
         
         $relever= \App\Models\Response::factory()->create(
             [
-                "label"=>"Pour le demande de relever de note ou diplôme, rendez-vous au service de scolarité dans la salle
-                  003"]
+                "label"=>"Pour le demande de relever de note ou diplôme, rendez-vous au service de scolarité dans la salle 003"]
         );
 
         $questionRelever= \App\Models\Question::factory()->create(
             [
-                'mot_cle'=> "relever note",
+                'mot_cle'=> "relever de note",
                 "phrase"=> "Où je peut avoir mon relever des notes? ",
                 "reponse" => $relever->id
             ]
@@ -178,19 +176,13 @@ class DatabaseSeeder extends Seeder
 
         $responsableMention= \App\Models\Response::factory()->create(
             [
-                "label"=>"Les responsables de mention sont : Monsieur RABETAFIKA Louis Haja, Maître de Conférences 
-                pour la mention 'Informatique'; et Monsieur DIMBISOA William Germain, 
-                Maître de Conférences pour la mention 'Intelligence Artificielle'."
+                "label"=>"Les responsables de mention sont : Monsieur RABETAFIKA Louis Haja, Maître de Conférences pour la mention 'Informatique'; et Monsieur DIMBISOA William Germain, Maître de Conférences pour la mention 'Intelligence Artificielle'."
             ]
         );
 
         $responsableParcours= \App\Models\Response::factory()->create(
             [
-                "label"=>"Les responsables de parcours sont : Monsieur RALAIVAO Jean Christian, 
-                Assistant d’Enseignement Supérieur et de Recherche pour la parcours 'Génie Logiciel et Base de Données'; 
-                Monsieur SIAKA, Assistant d’Enseignement Supérieur et de Recherche  pour la parcours 
-                'Administration Systèmes et Réseaux'; et pour finir, Monsieur GILANTE Gesazafy, 
-                Assistant d’Enseignement Supérieur et de Recherche pour la parcours 'Informatique Générale '"
+                "label"=>"Les responsables de parcours sont : Monsieur RALAIVAO Jean Christian, Assistant d’Enseignement Supérieur et de Recherche pour la parcours 'Génie Logiciel et Base de Données' Monsieur SIAKA, Assistant d’Enseignement Supérieur et de Recherche  pour la parcours 'Administration Systèmes et Réseaux'; et pour finir, Monsieur GILANTE Gesazafy, Assistant d’Enseignement Supérieur et de Recherche pour la parcours 'Informatique Générale'"
             ]
         );
 
@@ -211,6 +203,8 @@ class DatabaseSeeder extends Seeder
                 "reponse" => $responsableParcours->id
             ]
         );
+
+        
 
     }
 }
