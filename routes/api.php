@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AstuceController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\OrientionController;
 use App\Http\Controllers\UserController;
@@ -31,4 +32,5 @@ Route::middleware("auth:sanctum")->group(function(){
 });
 
 Route::post("/orientation", [OrientionController::class, "getOrientation"]);
+Route::get("/astuce", [AstuceController::class, "show"]);
 

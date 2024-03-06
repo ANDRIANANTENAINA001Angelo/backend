@@ -132,7 +132,9 @@ class DatabaseSeeder extends Seeder
         \App\Models\Matiere::factory()->create([
             "label"=>"Gns3",
             "categorie_id"=>$reseau->id
-        ]);   
+        ]);
+
+        \App\Models\Astuce::factory(10)->create();   
 
         
     }
