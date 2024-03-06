@@ -35,9 +35,6 @@ class DatabaseSeeder extends Seeder
         $reseau= \App\Models\Categorie::factory()->create([
             "label"=> "Reseau"
         ]);
-        $math= \App\Models\Categorie::factory()->create([
-            "label"=> "Math"
-        ]);
 
         $metionInfo= \App\Models\Mention::factory()->create([
             "label"=>"Informatique"
@@ -75,15 +72,15 @@ class DatabaseSeeder extends Seeder
         // matière
         \App\Models\Matiere::factory()->create([
             "label"=>"Analyse",
-            "categorie_id"=>$math->id
+            "categorie_id"=>$dev->id
         ]);
         \App\Models\Matiere::factory()->create([
             "label"=>"Algèbre",
-            "categorie_id"=>$math->id
+            "categorie_id"=>$dev->id
         ]);
         \App\Models\Matiere::factory()->create([
             "label"=>"Proba Stat",
-            "categorie_id"=>$math->id
+            "categorie_id"=>$dev->id
         ]);
         \App\Models\Matiere::factory()->create([
             "label"=>"Electronique Analogique",

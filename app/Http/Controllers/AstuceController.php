@@ -36,6 +36,7 @@ class AstuceController extends Controller
      */
     public function show()
     {
+        
         return Astuce::first();
     }
 

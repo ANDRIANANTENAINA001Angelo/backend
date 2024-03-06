@@ -14,6 +14,7 @@ class OrientionController extends Controller
         $dev = 0;
 
         $last_index = count($request->liste_matiere)-1;
+        
 
         for ($i = 0; $i <= $last_index; $i++) {
             $matiere = Matiere::with("categorie")->where("label", "=", $request->liste_matiere[$i])->get();
@@ -22,10 +23,10 @@ class OrientionController extends Controller
                 $dev  += 1;
             }elseif($categorie === "Reseau"){
                 $reseau += 1;
-            }elseif($categorie === "Math"){
-                $math += 1;
             }
         }
+
+        
         
         if($reseau > $dev){
             return "SR";
