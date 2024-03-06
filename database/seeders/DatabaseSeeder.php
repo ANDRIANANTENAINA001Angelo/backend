@@ -136,6 +136,27 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Astuce::factory(10)->create();   
 
+
+        // création ENI, presentation ENI, ENI, 
+        // Relever de note, Deposer livre memoire, Diplôme 
+        // date reception, date dans calendrier pédagogique, 
+        // Responsable service - Personnelle (bureau), responsable de mention 
+        // description bâtiment (salle)
+
+        // créé question et response
+        $presentation= \App\Models\Response::factory()->create(
+            [
+                "label"=>"L'ENI ou l'école nationale d'informatique, est la pépinière des élites en informatique. 
+                Son but est de former des élites compétents! Elle se situe à Tanambao Fianarantsoa."]
+        );
+
+        $question= \App\Models\Question::factory()->create(
+            [
+                'mot_cle'=> "ENI",
+                "phrase"=> "C'est quoi ENI ?",
+                "reponse" => $presentation->id
+            ]
+        );
         
     }
 }
