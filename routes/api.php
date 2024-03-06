@@ -3,7 +3,9 @@
 use App\Http\Controllers\AstuceController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\OrientionController;
+use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\UserController;
+use App\Models\Question;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use PharIo\Version\OrVersionConstraintGroup;
@@ -20,17 +22,21 @@ use PharIo\Version\OrVersionConstraintGroup;
 */
 
 // route non protégé
-Route::post("/api/login",[AuthController::class,"login"]);
-Route::post("/api/signup",[UserController::class,"store"]);
+Route::post("login",[AuthController::class,"login"]);
+Route::post("signup",[UserController::class,"store"]);
 
 
 
 // route protégé
 Route::middleware("auth:sanctum")->group(function(){
-    Route::delete("/api/logout",[AuthController::class,"logout"]);
+    Route::delete("logout",[AuthController::class,"logout"]);
     Route::name("user.")->resource("user",UserController::class)->except(["create","edit"]);
 });
 
-Route::post("/orientation", [OrientionController::class, "getOrientation"]);
-Route::get("/astuce", [AstuceController::class, "show"]);
+Route::post("orientation", [OrientionController::class, "getOrientation"]);
+Route::get("astuce", [AstuceController::class, "show"]);
+
+// Question
+Route::get("question/{question}",[QuestionController::class,"basic"]);
+Route::post("question",[QuestionController::class,"avance"]);
 
