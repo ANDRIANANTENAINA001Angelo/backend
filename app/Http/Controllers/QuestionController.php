@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SearchRequest;
 use App\Models\Question as Questionnaire;
 use App\Models\Response;
 use Illuminate\Database\Eloquent\Casts\Json;
@@ -16,11 +17,12 @@ class QuestionController extends Controller
         return $reponse;
     }
 
-    public function avance(Request $request){
+    public function avance(SearchRequest $request){
       
         $questions= Questionnaire::all();
         $reponse= "";
-        $data = mb_strtolower($request->data, 'UTF-8');
+        // dd($request->validated());
+        $data = mb_strtolower($request->validated("data"), 'UTF-8');
 
         // Remplacer les caractères accentués par leurs équivalents non accentués
         $caracteresAccentues = array('à', 'á', 'â', 'ã', 'ä', 'å', 'æ', 'ç', 'è', 'é', 'ê', 'ë', 'ì', 'í', 'î', 'ï', 'ñ', 'ò', 'ó', 'ô', 'õ', 'ö', 'ø', 'ù', 'ú', 'û', 'ü', 'ý', 'ÿ');

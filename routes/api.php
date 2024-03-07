@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\AstuceController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MatiereController;
 use App\Http\Controllers\OrientionController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\UserController;
+use App\Models\Matiere;
 use App\Models\Question;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -43,4 +45,4 @@ Route::get("information/{type}", [AstuceController::class, "filterType"]);
 // Question
 Route::get("question/{question}",[QuestionController::class,"basic"]);
 Route::post("question",[QuestionController::class,"avance"]);
-
+Route::get("matiere",[MatiereController::class,"all"]);
