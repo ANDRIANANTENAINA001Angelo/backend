@@ -44,5 +44,6 @@ Route::get("information/{type}", [AstuceController::class, "filterType"]);
 
 // Question
 Route::get("question/{question}",[QuestionController::class,"basic"]);
-Route::post("question",[QuestionController::class,"avance"]);
-Route::get("matiere",[MatiereController::class,"all"]);
+Route::get("question-avance/{data}",[QuestionController::class,"avance"]);
+
+Route::get("matiere",[MatiereController::class,"index"]);

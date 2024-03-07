@@ -32,6 +32,9 @@ class UserRequest extends FormRequest
             "niveau"=>["required",Rule::in(["L1","L2","L3","M1","M2"])],
             "adresse"=>["required","String"],
             "email"=>["required","email"],
+            "mobile"=>["string"],
+            "image"=>["string"]
+
             // "password"=>["required","min:4"],
         ];
     }

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class MatiereController extends Controller
 {
-    public function all(){
+    public function index(){
         return Matiere::all();
     }
 }

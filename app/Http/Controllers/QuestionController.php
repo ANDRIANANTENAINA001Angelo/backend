@@ -17,12 +17,13 @@ class QuestionController extends Controller
         return $reponse;
     }
 
-    public function avance(SearchRequest $request){
+    // public function avance(SearchRequest $request){
+    public function avance(Request $request){
       
         $questions= Questionnaire::all();
         $reponse= "";
-        // dd($request->validated());
-        $data = mb_strtolower($request->validated("data"), 'UTF-8');
+        // dd($request->data);
+        $data = mb_strtolower($request->data, 'UTF-8');
 
         // Remplacer les caractères accentués par leurs équivalents non accentués
         $caracteresAccentues = array('à', 'á', 'â', 'ã', 'ä', 'å', 'æ', 'ç', 'è', 'é', 'ê', 'ë', 'ì', 'í', 'î', 'ï', 'ñ', 'ò', 'ó', 'ô', 'õ', 'ö', 'ø', 'ù', 'ú', 'û', 'ü', 'ý', 'ÿ');
