@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\AstuceController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\MatiereController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\OrientionController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\UserController;
@@ -27,6 +29,8 @@ use PharIo\Version\OrVersionConstraintGroup;
 Route::post("login",[AuthController::class,"login"]);
 Route::post("signup",[UserController::class,"store"]);
 
+Route::post("send/message",[ChatController::class,"send"]);
+Route::get("message/{channel}",[ChatController::class,"all"]);
 
 
 // route protégé
