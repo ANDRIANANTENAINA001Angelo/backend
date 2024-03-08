@@ -22,13 +22,7 @@ class ChatMessageListener implements ShouldQueue
      */
     public function handle(ChatMessageEvent $event): void
     {
-        $message = Message::create(
-            [
-                "content"=> $event->message,
-                "sender"=> $event->user_id,
-                "channel"=> $event->channel
-            ]
-        );
+        
 
     }
 }

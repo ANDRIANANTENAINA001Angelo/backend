@@ -7,6 +7,7 @@ use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -82,6 +83,18 @@ class UserController extends Controller
         
         $user->delete();
         return $this->response->success($user,"Utilisateur est supprimer avec succèss!");
+    }
+
+
+
+    public function niveauFilter(){
+        $user= Auth::getUser();
+        return $user;
+        // dd($niveau);
+        // dd($result= User::where("niveau","=",$niveau));
+        // // return response()->json(["data"=> User::where("niveau","=",$niveau)->get() ]);
+        // return $niveau;
+        // return $result;
     }
     
 }

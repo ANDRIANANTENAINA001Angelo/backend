@@ -23,6 +23,8 @@ class User extends Authenticatable
         "adresse",
         "niveau",
         "matricule",
+        "mobile",
+        "image",
 
         'email',
         'password',

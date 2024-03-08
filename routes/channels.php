@@ -18,5 +18,12 @@ use Illuminate\Support\Facades\Broadcast;
 // });
 
 Broadcast::channel('chat.{niveau}', function ($user, $niveau) {
+    // return true;
     return (string) $user->niveau === (string) $niveau;
 });
+
+Broadcast::channel('chat.eni', function ($user, $niveau) {
+    return true;
+});
+
+

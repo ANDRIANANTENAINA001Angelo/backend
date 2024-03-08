@@ -19,11 +19,12 @@ class AuthController extends Controller
         
         $user= User::where("email","=",$email)->get();
         $token = $user[0]->createToken("token");
+        // Auth::authenticate($user[0]);
 
         return $this->response->success(
             [
             'token' => $token->plainTextToken,
-            // "user"=>Auth::user()
+            "user"=>Auth::user()
         ],"user connected succesfuly!");       
     }
         

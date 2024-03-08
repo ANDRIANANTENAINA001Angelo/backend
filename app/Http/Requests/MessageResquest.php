@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Validation\Rule;
 
 class MessageResquest extends FormRequest
@@ -25,13 +27,15 @@ class MessageResquest extends FormRequest
         return [
             "content"=>[
                 "string","required"
-            ],
-            "sender"=>[
-                Rule::exists("users","id"), "required"
-            ],
-            "channel"=>[
-                "string","required",Rule::exists("niveau","label")
             ]
         ];
+    }
+
+    public function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json([
+            "message"=>"data no valid",
+            "error"=>$validator->errors()
+        ],400));
     }
 }

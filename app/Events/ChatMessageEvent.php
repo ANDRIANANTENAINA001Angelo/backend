@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Models\Message;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -22,11 +23,16 @@ class ChatMessageEvent implements ShouldBroadcast
     /**
      * Create a new event instance.
      */
-    public function __construct(private array $data)
+    public function __construct(private array $data,string $channel="")
     {
         $this->user_id = Auth::user()->id;
         $this->message = $data["content"];
-        $this->channel = "channel.".$data["channel"];
+        if($channel==""){
+            $this->channel = "chat.".Auth::user()->niveau;
+        }
+        else{
+            $this->channel = "chat.eni";
+        }
     }
 
     /**
@@ -36,7 +42,7 @@ class ChatMessageEvent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new PrivateChannel($this->channel);
+        return new Channel($this->channel);
     }
 
     public function broadcastAs():string{
@@ -45,11 +51,17 @@ class ChatMessageEvent implements ShouldBroadcast
 
     public function broadcastWith()
     {
+        $message = Message::create(
+            [
+                "content"=> $this->message,
+                "sender"=> $this->user_id,
+                "channel"=> $this->channel
+            ]
+        );
+
         return [
-            'message' => $this->message,
-            'sender' => $this->user_id,
-            "channel"=> $this->channel,
-            "creat_at" => now(),
+            "message is saved",
+            $message
         ];
     }
 

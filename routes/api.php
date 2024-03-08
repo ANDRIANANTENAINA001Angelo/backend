@@ -3,6 +3,7 @@
 use App\Http\Controllers\AstuceController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\FilterUserController;
 use App\Http\Controllers\MatiereController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\OrientionController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\UserController;
 use App\Models\Matiere;
 use App\Models\Question;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use PharIo\Version\OrVersionConstraintGroup;
@@ -29,15 +31,21 @@ use PharIo\Version\OrVersionConstraintGroup;
 Route::post("login",[AuthController::class,"login"]);
 Route::post("signup",[UserController::class,"store"]);
 
-Route::post("send/message",[ChatController::class,"send"]);
-Route::get("message/{channel}",[ChatController::class,"all"]);
+
 
 
 // route protégé
 Route::middleware("auth:sanctum")->group(function(){
     Route::delete("logout",[AuthController::class,"logout"]);
     Route::name("user.")->resource("user",UserController::class)->except(["create","edit"]);
+    Route::post("send/message",[ChatController::class,"send"]); 
+    Route::get("message/{channel}",[ChatController::class,"all"]);
+    Route::get("niveau/user",[FilterUserController::class,"niveauFilter"]);
+    Route::get("message-user",[FilterUserController::class,"messageFilter"]);
+    Route::get("message-eni",[FilterUserController::class,"messageEni"]);
 });
+
+
 
 //Orientation
 Route::post("orientation", [OrientionController::class, "getOrientation"]);
