@@ -42,6 +42,6 @@ class QuestionController extends Controller
             }
             
         }
-            return response()->json("Je n'ai pas encore cette information!");
+            return response()->json("Je n'ai pas encore cette information pour le moment !");
     }
 }

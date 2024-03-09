@@ -24,7 +24,7 @@ class AuthController extends Controller
         return $this->response->success(
             [
             'token' => $token->plainTextToken,
-            "user"=>Auth::user()
+            "user"=>$user[0]
         ],"user connected succesfuly!");       
     }
         

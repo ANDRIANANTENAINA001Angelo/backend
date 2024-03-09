@@ -97,4 +97,8 @@ class UserController extends Controller
         // return $result;
     }
     
+    public function getNiveau(){
+        $user= Auth::user();
+        return $user->niveau;
+    }
 }

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string("content");
             $table->foreignIdFor(User::class,"sender");
             $table->string("channel");
+            $table->string("image")->nullable();
             $table->timestamps();
         });
     }

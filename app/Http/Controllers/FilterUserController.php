@@ -17,10 +17,10 @@ class FilterUserController extends Controller
 
     public function MessageFilter(){
         $niveau= Auth::user()->niveau;
-        return response()->json(["data"=> Message::where("channel","=","chat.".$niveau)->get() ]);
+        return response()->json(["data"=> Message::with("sender")->where("channel","=","chat.".$niveau)->get() ]);
     }
 
     public function MessageEni(){
-        return response()->json(["data"=> Message::where("channel","=","chat.eni")->get() ]);
+        return response()->json(["data"=> Message::with("sender")->where("channel","=","chat.eni")->get() ]);
     }
 }

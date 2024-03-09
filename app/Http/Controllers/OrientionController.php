@@ -30,15 +30,15 @@ class OrientionController extends Controller
         if($reseau > $dev){
 
             return [
-                "GB" => number_format($pourcentage_GB, 2) . "%",
-                "SR" => number_format($pourcentage_SR, 2) . "%"
+                "GB" => number_format($pourcentage_GB, 2),
+                "SR" => number_format($pourcentage_SR, 2)
             ];
 
         } else {
 
             return [
-                "GB" => $pourcentage_GB . "%",
-                "SR" => $pourcentage_SR . "%"
+                "GB" => number_format($pourcentage_GB, 2),
+                "SR" => number_format($pourcentage_SR, 2)
             ];
 
         }   

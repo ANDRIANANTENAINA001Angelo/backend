@@ -27,6 +27,9 @@ class MessageResquest extends FormRequest
         return [
             "content"=>[
                 "string","required"
+            ],
+            "image"=>[
+                "string"
             ]
         ];
     }

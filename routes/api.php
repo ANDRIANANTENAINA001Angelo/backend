@@ -39,16 +39,19 @@ Route::middleware("auth:sanctum")->group(function(){
     Route::delete("logout",[AuthController::class,"logout"]);
     Route::name("user.")->resource("user",UserController::class)->except(["create","edit"]);
     Route::post("send/message",[ChatController::class,"send"]); 
+    Route::post("send/message/all",[ChatController::class,"sendAll"]); 
     Route::get("message/{channel}",[ChatController::class,"all"]);
-    Route::get("niveau/user",[FilterUserController::class,"niveauFilter"]);
     Route::get("message-user",[FilterUserController::class,"messageFilter"]);
     Route::get("message-eni",[FilterUserController::class,"messageEni"]);
+    Route::get("niveau/user",[FilterUserController::class,"niveauFilter"]);
+    Route::get("niveau/getNiveau",[UserController::class,"getNiveau"]);
+    
+    //Orientation
+    Route::post("orientation", [OrientionController::class, "getOrientation"]);
 });
 
 
 
-//Orientation
-Route::post("orientation", [OrientionController::class, "getOrientation"]);
 
 //Information
 Route::get("information", [AstuceController::class, "showAll"]);

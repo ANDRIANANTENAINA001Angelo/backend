@@ -13,7 +13,8 @@ class Message extends Model
     protected $fillable = [
         "content",
         "sender",
-        "channel"
+        "channel",
+        "image"
     ];
 
     // relations

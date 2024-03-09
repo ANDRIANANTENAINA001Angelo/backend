@@ -156,7 +156,7 @@ class DatabaseSeeder extends Seeder
         
         $relever= \App\Models\Response::factory()->create(
             [
-                "label"=>"Pour le demande de relever de note ou diplôme, rendez-vous au service de scolarité dans la salle 003"]
+                "label"=>"Pour le demande de relever de note ou diplôme, rendez-vous au service de scolarité dans la salle 005"]
         );
 
         $questionRelever= \App\Models\Question::factory()->create(
